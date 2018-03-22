@@ -211,6 +211,7 @@ def convert_to_list(y):
         y = [y]
     return y
 
+
 # Import data and scale it
 #
 # scale values from to values between -1 and 1
@@ -240,7 +241,7 @@ for i in range(training_cycles):
         net.train(X_train[j], Y_train[j])
     total_error = net.total_error(X_test, Y_test)
     print("Trained {} times, the total error is now: ".format(i), total_error)
-    if previous_error - total_error < 0.000000001:
+    if np.abs(previous_error - total_error) < 0.000000001:
         print("converged")
         break
     previous_error = total_error
